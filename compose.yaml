@@ -1,0 +1,57 @@
+name: dailybrief
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: dailybrief
+      POSTGRES_USER: dailybrief
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:${DB_PORT:-15432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dailybrief -d dailybrief"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+    restart: unless-stopped
+  migrate:
+    build:
+      context: .
+      target: worker
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://dailybrief:${POSTGRES_PASSWORD}@db:5432/dailybrief
+    command: ["npm", "run", "migrate"]
+    depends_on:
+      db:
+        condition: service_healthy
+  web:
+    build:
+      context: .
+      target: web
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://dailybrief:${POSTGRES_PASSWORD}@db:5432/dailybrief
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:${PORT:-3000}:3000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+    init: true
+  worker:
+    build:
+      context: .
+      target: worker
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://dailybrief:${POSTGRES_PASSWORD}@db:5432/dailybrief
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+    init: true
+volumes:
+  postgres_data:

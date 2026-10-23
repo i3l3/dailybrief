@@ -1,0 +1,311 @@
+import { defaults, type DashboardData, type Item, type Kind } from "./types";
+export function demoData(): DashboardData {
+  const now = Date.now();
+  let n = 0;
+  const item = (
+    kind: Kind,
+    title: string,
+    body: string,
+    source: string,
+    tags: string[],
+    minutes: number,
+    extra: Partial<Item> = {},
+  ): Item => ({
+    id: "demo-" + ++n,
+    kind,
+    title,
+    body,
+    source,
+    tags,
+    matched: tags,
+    url: kind === "geek" ? "https://news.hada.io/" : "",
+    published_at: new Date(now - minutes * 60000).toISOString(),
+    first_seen_at: new Date(now - minutes * 60000).toISOString(),
+    updated_at: new Date(now - minutes * 60000).toISOString(),
+    summary: null,
+    summary_status: "idle",
+    read_at: null,
+    saved: false,
+    account_id: null,
+    metadata: { contentScope: "feed" },
+    ...extra,
+  });
+  const settings = structuredClone(defaults);
+  settings.interests = [
+    { name: "AI", keywords: ["AI", "LLM"], exclude: [] },
+    { name: "개발", keywords: ["개발", "오픈소스"], exclude: [] },
+    { name: "보안", keywords: ["CVE", "보안"], exclude: [] },
+  ];
+  settings.location.name = "서울";
+  settings.school = { name: "예시고등학교", office: "", code: "" };
+  return {
+    demo: true,
+    settings,
+    baseline: new Date(now - 5 * 3600000).toISOString(),
+    visitAt: new Date(now).toISOString(),
+    collectors: [],
+    accounts: [
+      {
+        id: "personal",
+        provider: "gmail",
+        label: "개인 메일",
+        email: "hello@example.com",
+        auto_summary: true,
+        excluded_senders: [],
+        excluded_folders: [],
+        status: "connected",
+        last_sync: new Date(now).toISOString(),
+      },
+      {
+        id: "school",
+        provider: "imap",
+        label: "학교 메일",
+        email: "student@example.edu",
+        auto_summary: true,
+        excluded_senders: [],
+        excluded_folders: [],
+        status: "connected",
+        last_sync: new Date(now).toISOString(),
+      },
+    ],
+    items: [
+      item(
+        "news",
+        "더 작게, 더 빠르게. 온디바이스 AI가 바꾸는 개발 환경",
+        "클라우드 연결 없이 기기 안에서 동작하는 AI 모델이 늘고 있습니다. 로컬 추론 도구와 경량 모델을 함께 살펴봅니다.",
+        "테크 브리핑",
+        ["AI", "개발"],
+        25,
+        {
+          summary:
+            "경량 모델과 로컬 추론 도구의 발전으로 노트북에서도 AI 기능을 실행할 수 있는 선택지가 넓어지고 있습니다. 네트워크 의존도와 데이터 전송을 줄이는 대신, 기기 성능에 맞춘 모델 선택이 중요해집니다.",
+          summary_status: "done",
+          metadata: { featured: true, contentScope: "feed" },
+        },
+      ),
+      item(
+        "news",
+        "오픈소스 프로젝트, 처음 기여하기 전에 알아두면 좋은 것들",
+        "작은 문서 수정부터 시작해 코드 리뷰에 참여하는 과정까지. 처음 기여하는 개발자를 위한 안내입니다.",
+        "개발자 이야기",
+        ["개발"],
+        68,
+      ),
+      item(
+        "news",
+        "AI 에이전트의 도구 호출, 어디까지 맡길 수 있을까",
+        "권한을 작게 나누고 실행 결과를 검증하는 설계가 주목받고 있습니다.",
+        "테크 브리핑",
+        ["AI", "보안"],
+        103,
+      ),
+      item(
+        "news",
+        "일상 속 디지털 습관을 돌아보는 시간",
+        "알림을 줄이고 나에게 필요한 정보에 집중하는 방법을 소개합니다.",
+        "라이프 레터",
+        [],
+        250,
+      ),
+      item(
+        "news",
+        "이번 주 과학계에서 주목한 연구 이야기",
+        "여러 분야의 새로운 연구 소식을 모았습니다.",
+        "과학 노트",
+        [],
+        410,
+      ),
+      item(
+        "mail",
+        "[학교] 다음 주 프로젝트 발표 일정 안내",
+        "다음 주 수요일 오후 2시에 프로젝트 발표가 있습니다. 발표 자료는 화요일까지 제출해 주세요.",
+        "학교 메일",
+        [],
+        42,
+        {
+          account_id: "school",
+          metadata: { from: "학사운영팀 <office@example.edu>" },
+          summary:
+            "프로젝트 발표는 다음 주 수요일 오후 2시입니다. 발표 자료 제출 마감은 화요일입니다.",
+          summary_status: "done",
+        },
+      ),
+      item(
+        "mail",
+        "이번 주 개발자 뉴스레터가 도착했어요",
+        "이번 호에서는 로컬 AI와 오픈소스 도구를 소개합니다.",
+        "개인 메일",
+        ["개발"],
+        95,
+        {
+          account_id: "personal",
+          metadata: { from: "Dev Letter <letter@example.com>" },
+          summary:
+            "로컬 AI 도구와 이번 주 오픈소스 프로젝트를 모은 뉴스레터입니다.",
+          summary_status: "done",
+        },
+      ),
+      item(
+        "mail",
+        "GitHub 활동 요약",
+        "구독 중인 저장소의 새로운 릴리스와 토론을 확인하세요.",
+        "개인 메일",
+        ["개발"],
+        175,
+        {
+          account_id: "personal",
+          metadata: { from: "GitHub <noreply@example.com>" },
+        },
+      ),
+      item(
+        "geek",
+        "좋은 개발 도구는 집중을 방해하지 않는다",
+        "도구의 복잡도를 줄이고 개발자의 작업 흐름을 지키는 설계에 관한 글입니다.",
+        "GeekNews",
+        ["개발"],
+        35,
+      ),
+      item(
+        "geek",
+        "작은 언어 모델을 직접 실행해 본 기록",
+        "로컬 환경에서 모델을 실행하며 겪은 선택과 실험을 정리했습니다.",
+        "GeekNews",
+        ["AI"],
+        125,
+      ),
+      item(
+        "geek",
+        "오래가는 오픈소스 프로젝트의 공통점",
+        "유지보수와 커뮤니티 운영을 살펴봅니다.",
+        "GeekNews",
+        ["개발"],
+        230,
+      ),
+      item(
+        "cve",
+        "CVE 데모 · 웹 프레임워크 입력 검증 취약점",
+        "입력 검증 과정에서 발생할 수 있는 취약점의 예시입니다. 실제 취약점 공지가 아닙니다.",
+        "NVD",
+        ["웹 프레임워크"],
+        45,
+        {
+          metadata: {
+            severity: "HIGH",
+            score: 8.1,
+            matchType: "설정한 제품 조건과 일치 · 데모",
+          },
+        },
+      ),
+      item(
+        "cve",
+        "CVE 데모 · 컨테이너 도구 권한 확인 문제",
+        "권한 확인 문제를 보여주는 가상 항목입니다. 실제 CVE 식별자가 아닙니다.",
+        "NVD",
+        ["컨테이너"],
+        150,
+        {
+          metadata: {
+            severity: "MEDIUM",
+            score: 5.3,
+            matchType: "키워드 일치 · 데모",
+          },
+        },
+      ),
+    ],
+    widgets: {
+      weather: {
+        updated_at: new Date(now).toISOString(),
+        error: null,
+        data: {
+          location: "서울",
+          current: {
+            temperature_2m: 18,
+            apparent_temperature: 17,
+            relative_humidity_2m: 54,
+            weather_code: 2,
+          },
+          daily: {
+            temperature_2m_max: [21],
+            temperature_2m_min: [12],
+            precipitation_probability_max: [10],
+          },
+        },
+      },
+      meals: {
+        updated_at: new Date(now).toISOString(),
+        error: null,
+        data: {
+          school: "예시고등학교",
+          meals: [
+            {
+              type: "lunch",
+              name: "중식",
+              menu: [
+                "현미밥",
+                "소고기미역국",
+                "닭갈비",
+                "콩나물무침",
+                "배추김치",
+                "사과",
+              ],
+              calories: "782 kcal",
+            },
+            {
+              type: "dinner",
+              name: "석식",
+              menu: [
+                "김치볶음밥",
+                "유부장국",
+                "돈가스 · 소스",
+                "양배추샐러드",
+                "깍두기",
+              ],
+              calories: "846 kcal",
+            },
+          ],
+        },
+      },
+      stocks: {
+        updated_at: new Date(now).toISOString(),
+        error: null,
+        data: {
+          quotes: [
+            {
+              symbol: "005930",
+              name: "삼성전자",
+              market: "KR",
+              price: 72400,
+              change: 800,
+              percent: 1.12,
+              currency: "KRW",
+              asOf: new Date(now).toISOString(),
+              timing: "예시 시세",
+            },
+            {
+              symbol: "NVDA",
+              name: "NVIDIA",
+              market: "US",
+              price: 142.87,
+              change: -2.19,
+              percent: -1.51,
+              currency: "USD",
+              asOf: new Date(now).toISOString(),
+              timing: "예시 시세",
+            },
+            {
+              symbol: "AAPL",
+              name: "Apple",
+              market: "US",
+              price: 232.15,
+              change: 1.07,
+              percent: 0.46,
+              currency: "USD",
+              asOf: new Date(now).toISOString(),
+              timing: "예시 시세",
+            },
+          ],
+        },
+      },
+    },
+  };
+}

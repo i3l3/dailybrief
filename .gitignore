@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.next-integration/
+.env*
+!.env.example
+.codex/
+.agents/
+coverage/
+.impeccable/*
+!.impeccable/design.json
+!.impeccable/surfaces/
+.agents/skills/impeccable/scripts/bin/
+*.tsbuildinfo
+artifacts/
+*.dump
+*.sql.gz

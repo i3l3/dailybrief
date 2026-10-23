@@ -1,0 +1,389 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T14:38:59.830Z",
+  "title": "Design System: DailyBrief",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Background",
+        "tonalRamp": [
+          "oklch(15% 0.0178 222.77)",
+          "oklch(26% 0.0178 222.77)",
+          "oklch(38% 0.0178 222.77)",
+          "oklch(49% 0.0178 222.77)",
+          "oklch(61% 0.0178 222.77)",
+          "oklch(72% 0.0178 222.77)",
+          "oklch(84% 0.0178 222.77)",
+          "oklch(95% 0.0178 222.77)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "tonalRamp": [
+          "oklch(15% 0.0215 222.31)",
+          "oklch(26% 0.0215 222.31)",
+          "oklch(38% 0.0215 222.31)",
+          "oklch(49% 0.0215 222.31)",
+          "oklch(61% 0.0215 222.31)",
+          "oklch(72% 0.0215 222.31)",
+          "oklch(84% 0.0215 222.31)",
+          "oklch(95% 0.0215 222.31)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Text",
+        "tonalRamp": [
+          "oklch(15% 0.0089 179.60)",
+          "oklch(26% 0.0089 179.60)",
+          "oklch(38% 0.0089 179.60)",
+          "oklch(49% 0.0089 179.60)",
+          "oklch(61% 0.0089 179.60)",
+          "oklch(72% 0.0089 179.60)",
+          "oklch(84% 0.0089 179.60)",
+          "oklch(95% 0.0089 179.60)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0222 200.36)",
+          "oklch(26% 0.0222 200.36)",
+          "oklch(38% 0.0222 200.36)",
+          "oklch(49% 0.0222 200.36)",
+          "oklch(61% 0.0222 200.36)",
+          "oklch(72% 0.0222 200.36)",
+          "oklch(84% 0.0222 200.36)",
+          "oklch(95% 0.0222 200.36)"
+        ]
+      },
+      "subtle": {
+        "role": "neutral",
+        "displayName": "Subtle",
+        "tonalRamp": [
+          "oklch(15% 0.0279 199.51)",
+          "oklch(26% 0.0279 199.51)",
+          "oklch(38% 0.0279 199.51)",
+          "oklch(49% 0.0279 199.51)",
+          "oklch(61% 0.0279 199.51)",
+          "oklch(72% 0.0279 199.51)",
+          "oklch(84% 0.0279 199.51)",
+          "oklch(95% 0.0279 199.51)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.0326 184.42)",
+          "oklch(26% 0.0326 184.42)",
+          "oklch(38% 0.0326 184.42)",
+          "oklch(49% 0.0326 184.42)",
+          "oklch(61% 0.0326 184.42)",
+          "oklch(72% 0.0326 184.42)",
+          "oklch(84% 0.0326 184.42)",
+          "oklch(95% 0.0326 184.42)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Accent",
+        "tonalRamp": [
+          "oklch(15% 0.0776 138.71)",
+          "oklch(26% 0.0776 138.71)",
+          "oklch(38% 0.0776 138.71)",
+          "oklch(49% 0.0776 138.71)",
+          "oklch(61% 0.0776 138.71)",
+          "oklch(72% 0.0776 138.71)",
+          "oklch(84% 0.0776 138.71)",
+          "oklch(95% 0.0776 138.71)"
+        ]
+      },
+      "accent-strong": {
+        "role": "primary",
+        "displayName": "Accent Strong",
+        "tonalRamp": [
+          "oklch(15% 0.0659 139.00)",
+          "oklch(26% 0.0659 139.00)",
+          "oklch(38% 0.0659 139.00)",
+          "oklch(49% 0.0659 139.00)",
+          "oklch(61% 0.0659 139.00)",
+          "oklch(72% 0.0659 139.00)",
+          "oklch(84% 0.0659 139.00)",
+          "oklch(95% 0.0659 139.00)"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Red",
+        "tonalRamp": [
+          "oklch(15% 0.1022 20.39)",
+          "oklch(26% 0.1022 20.39)",
+          "oklch(38% 0.1022 20.39)",
+          "oklch(49% 0.1022 20.39)",
+          "oklch(61% 0.1022 20.39)",
+          "oklch(72% 0.1022 20.39)",
+          "oklch(84% 0.1022 20.39)",
+          "oklch(95% 0.1022 20.39)"
+        ]
+      },
+      "blue": {
+        "role": "secondary",
+        "displayName": "Blue",
+        "tonalRamp": [
+          "oklch(15% 0.0928 257.24)",
+          "oklch(26% 0.0928 257.24)",
+          "oklch(38% 0.0928 257.24)",
+          "oklch(49% 0.0928 257.24)",
+          "oklch(61% 0.0928 257.24)",
+          "oklch(72% 0.0928 257.24)",
+          "oklch(84% 0.0928 257.24)",
+          "oklch(95% 0.0928 257.24)"
+        ]
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "Amber",
+        "tonalRamp": [
+          "oklch(15% 0.0779 77.97)",
+          "oklch(26% 0.0779 77.97)",
+          "oklch(38% 0.0779 77.97)",
+          "oklch(49% 0.0779 77.97)",
+          "oklch(61% 0.0779 77.97)",
+          "oklch(72% 0.0779 77.97)",
+          "oklch(84% 0.0779 77.97)",
+          "oklch(95% 0.0779 77.97)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Weather reading",
+        "purpose": "Large tabular temperature."
+      },
+      "headline": {
+        "displayName": "Greeting",
+        "purpose": "Dashboard page greeting; responsive sizes in Layout."
+      },
+      "featured-title": {
+        "displayName": "Featured article",
+        "purpose": "Lead reading title."
+      },
+      "metadata": {
+        "displayName": "Source context",
+        "purpose": "Sources, timestamps and connector detail."
+      }
+    },
+    "shadows": [
+      {
+        "name": "selected-navigation",
+        "value": "inset 0 0 0 1px rgba(184, 221, 172, 0.1)",
+        "purpose": "Quiet desktop active edge."
+      },
+      {
+        "name": "floating-notice",
+        "value": "0 12px 36px rgba(0, 0, 0, 0.3)",
+        "purpose": "Toast separation above content."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "0.18s ease",
+        "purpose": "Background, text, border and toggle feedback."
+      },
+      {
+        "name": "loading-spinner",
+        "value": "spin 1s linear infinite",
+        "purpose": "Busy controls."
+      },
+      {
+        "name": "loading-skeleton",
+        "value": "shimmer 1.5s linear infinite",
+        "purpose": "Initial loading panels."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none !important; transition: none !important; scroll-behavior: auto",
+        "purpose": "Applied when prefers-reduced-motion is reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1750px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1250px"
+      },
+      {
+        "name": "single-column",
+        "value": "950px"
+      },
+      {
+        "name": "mobile",
+        "value": "640px"
+      }
+    ],
+    "themes": {
+      "forest": {
+        "--bg": "#0c171b",
+        "--panel": "20, 34, 39",
+        "--surface-rgb": "10, 22, 27",
+        "--border-rgb": "184, 214, 209",
+        "--text": "#e8f0ee",
+        "--text-secondary": "#c5d7d2",
+        "--muted": "#a0b4b5",
+        "--subtle": "#8da6a7",
+        "--accent": "#b7ddac",
+        "--accent-rgb": "183, 221, 172",
+        "--accent-strong": "#ceefc5",
+        "--on-accent": "#172b24",
+        "--selected": "#3c514d",
+        "--line": "rgba(var(--border-rgb), 0.12)"
+      },
+      "midnight": {
+        "--bg": "#101423",
+        "--panel": "25, 30, 48",
+        "--surface-rgb": "12, 17, 33",
+        "--border-rgb": "177, 192, 225",
+        "--text": "#edf0fa",
+        "--text-secondary": "#cbd3eb",
+        "--muted": "#abb7d2",
+        "--subtle": "#98a6c5",
+        "--accent": "#b5c7ff",
+        "--accent-rgb": "181, 199, 255",
+        "--accent-strong": "#d4dfff",
+        "--on-accent": "#1a2546",
+        "--selected": "#384563",
+        "--line": "rgba(var(--border-rgb), 0.12)"
+      },
+      "slate": {
+        "--bg": "#1b2025",
+        "--panel": "35, 41, 47",
+        "--surface-rgb": "20, 25, 31",
+        "--border-rgb": "193, 206, 218",
+        "--text": "#edf1f5",
+        "--text-secondary": "#d0d9e1",
+        "--muted": "#b2c0cd",
+        "--subtle": "#a1b1bf",
+        "--accent": "#c4d9e8",
+        "--accent-rgb": "196, 217, 232",
+        "--accent-strong": "#e3eff7",
+        "--on-accent": "#24323d",
+        "--selected": "#465563",
+        "--line": "rgba(var(--border-rgb), 0.12)"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Shared compact action with visible keyboard focus.",
+      "html": "<button class=\"ds-button-primary\">새로고침</button>",
+      "css": ".ds-button-primary{font-family:\"Noto Sans KR Variable\",\"Noto Sans KR\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:40px;border-radius:8px;font-size:12px;font-weight:500;padding:10px 16px;cursor:pointer;transition:background .18s,color .18s;background:var(--accent,#b7ddac);color:#172b24;border:0;} .ds-button-primary:disabled{opacity:.45;cursor:not-allowed;} .ds-button-primary:focus-visible{outline:2px solid var(--accent,#b7ddac);outline-offset:4px;} .ds-button-primary:hover:not(:disabled){background:#d2ebc8;} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition:none!important;animation:none!important;}}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Shared compact action with visible keyboard focus.",
+      "html": "<button class=\"ds-button-secondary\">연결 확인</button>",
+      "css": ".ds-button-secondary{font-family:\"Noto Sans KR Variable\",\"Noto Sans KR\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:40px;border-radius:8px;font-size:12px;font-weight:500;padding:10px 16px;cursor:pointer;transition:background .18s,color .18s;background:rgba(30,50,54,.3);color:#d5e2df;border:1px solid rgba(183,216,208,.19);} .ds-button-secondary:disabled{opacity:.45;cursor:not-allowed;} .ds-button-secondary:focus-visible{outline:2px solid var(--accent,#b7ddac);outline-offset:4px;} .ds-button-secondary:hover:not(:disabled){background:rgba(150,185,177,.12);} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition:none!important;animation:none!important;}}"
+    },
+    {
+      "name": "Danger button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Shared compact action with visible keyboard focus.",
+      "html": "<button class=\"ds-button-danger\">연결 삭제</button>",
+      "css": ".ds-button-danger{font-family:\"Noto Sans KR Variable\",\"Noto Sans KR\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:40px;border-radius:8px;font-size:12px;font-weight:500;padding:10px 16px;cursor:pointer;transition:background .18s,color .18s;background:#553033;color:#ffd1cf;border:0;} .ds-button-danger:disabled{opacity:.45;cursor:not-allowed;} .ds-button-danger:focus-visible{outline:2px solid var(--accent,#b7ddac);outline-offset:4px;} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition:none!important;animation:none!important;}}"
+    },
+    {
+      "name": "Text field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Settings field.",
+      "html": "<label class=\"ds-field-label\">지역<input class=\"ds-input\" placeholder=\"지역을 검색하세요\" /></label>",
+      "css": ".ds-field-label{font-family:\"Noto Sans KR Variable\",\"Noto Sans KR\",sans-serif;display:flex;flex-direction:column;gap:8px;font-size:12px;color:#d3e1db;}.ds-input{font-family:\"Noto Sans KR Variable\",\"Noto Sans KR\",sans-serif;background:rgba(5,17,22,.45);border:1px solid rgba(185,218,211,.18);border-radius:8px;color:var(--text,#e8f0ee);padding:11px 12px;min-height:44px;caret-color:var(--accent,#b7ddac);transition:border-color .18s;}.ds-input:hover{border-color:rgba(185,218,211,.4);}.ds-input::placeholder{color:#93a8aa;}.ds-input:focus-visible{outline:2px solid var(--accent,#b7ddac);outline-offset:4px;} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition:none!important;animation:none!important;}}"
+    },
+    {
+      "name": "Rail destination",
+      "kind": "nav",
+      "refersTo": "navigation-active",
+      "description": "Desktop selected destination; mobile adds labels.",
+      "html": "<nav aria-label=\"주 메뉴\"><button class=\"ds-nav\" aria-label=\"대시보드\" aria-current=\"page\"><svg width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"7\" height=\"9\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"14\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"9\" x=\"14\" y=\"12\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"3\" y=\"16\" rx=\"1\"/></svg></button></nav>",
+      "css": ".ds-nav{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;border-radius:12px;background:rgba(184,221,172,.1);color:var(--accent-strong,#ceefc5);box-shadow:inset 0 0 0 1px rgba(184,221,172,.1);cursor:pointer;transition:background .18s,color .18s;}.ds-nav:hover{background:rgba(184,221,172,.1);color:var(--accent-strong,#ceefc5);}.ds-nav:focus-visible{outline:2px solid var(--accent,#b7ddac);outline-offset:4px;} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition:none!important;animation:none!important;}}"
+    },
+    {
+      "name": "Topic tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Inline topic filter action.",
+      "html": "<button class=\"ds-tag\">AI</button>",
+      "css": ".ds-tag{font-family:\"Noto Sans KR Variable\",\"Noto Sans KR\",sans-serif;font-size:10px;padding:2px 7px;color:#b7d3bb;background:rgba(175,211,169,.07);border:0;border-radius:4px;min-height:24px;cursor:pointer;}.ds-tag:hover{background:rgba(175,211,169,.14);}.ds-tag:focus-visible{outline:2px solid var(--accent,#b7ddac);outline-offset:4px;} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition:none!important;animation:none!important;}}"
+    },
+    {
+      "name": "Interest filter",
+      "kind": "chip",
+      "refersTo": "filter-active",
+      "description": "Pressed state stays visible and exposed.",
+      "html": "<button class=\"ds-filter\" aria-pressed=\"true\">전체</button>",
+      "css": ".ds-filter{font-family:\"Noto Sans KR Variable\",\"Noto Sans KR\",sans-serif;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;color:var(--accent,#b7ddac);background:rgba(184,221,172,.1);border:0;border-radius:7px;font-size:11px;min-height:33px;cursor:pointer;}.ds-filter:hover{color:var(--text,#e8f0ee);}.ds-filter:focus-visible{outline:2px solid var(--accent,#b7ddac);outline-offset:4px;} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition:none!important;animation:none!important;}}"
+    },
+    {
+      "name": "Glass panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "A feed container with source context.",
+      "html": "<section class=\"ds-panel\"><h2 class=\"ds-panel-title\">관심 뉴스</h2><p class=\"ds-panel-description\">관심사에 맞는 새로운 소식</p><article class=\"ds-article\"><p class=\"ds-meta\">미리보기 · 가상 데이터</p><a class=\"ds-article-link\" href=\"#\">오늘 읽을 새로운 이야기</a></article></section>",
+      "css": ".ds-panel{font-family:\"Noto Sans KR Variable\",\"Noto Sans KR\",sans-serif;background:rgba(var(--panel,20,34,39),var(--panel-alpha,.82));color:var(--text,#e8f0ee);border:1px solid rgba(194,224,216,.13);border-radius:var(--radius,14px);backdrop-filter:blur(22px);padding:18px 22px;min-width:0;}.ds-panel-title{font-size:14px;font-weight:550;letter-spacing:-.02em;margin:0;}.ds-panel-description{font-size:11px;color:var(--muted,#a0b4b5);margin:2px 0 16px;}.ds-article{border-top:1px solid var(--line,rgba(184,214,209,.12));padding:16px 0 0;}.ds-meta{color:var(--muted,#a0b4b5);font-size:10px;margin:0 0 7px;}.ds-article-link{font-size:14px;font-weight:550;line-height:1.7;letter-spacing:-.015em;color:inherit;text-decoration:none;transition:color .18s;}.ds-article-link:hover{color:var(--accent,#b7ddac);}.ds-article-link:focus-visible{outline:2px solid var(--accent,#b7ddac);outline-offset:4px;} @media(prefers-reduced-motion:reduce){[class^=\"ds-\"]{transition:none!important;animation:none!important;}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A private daily reading desk",
+    "overview": "A private daily reading desk in the user-chosen liquid-glass / gethomepage world. Forest-teal gradients sit behind translucent panels; warm pale text and sage actions keep dense Korean information calm and readable. The dashboard and settings share the same materials and controls.\n\nThe visual system is code-led: CSS backgrounds provide atmosphere and Lucide vectors provide the icon vocabulary. No shipping raster imagery is used. Source names, timestamps, connector state and explicit empty states remain part of the reading surface.",
+    "keyCharacteristics": [
+      "Forest-teal atmosphere with transparent, lightly bordered panels.",
+      "Compact Korean typography with a larger greeting and weather reading.",
+      "Pale sage actions and quiet, persistent state feedback.",
+      "A desktop rail that becomes labeled bottom navigation on mobile."
+    ],
+    "rules": [
+      {
+        "name": "The Visible Source Rule",
+        "body": "Keep source names, timestamps and failure or unconfigured states beside the information they qualify.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reading Hierarchy Rule",
+        "body": "Use the greeting and key reading for scale; keep metadata quieter than content titles, and place the date below the greeting.",
+        "section": "typography"
+      },
+      {
+        "name": "The Quiet Glass Rule",
+        "body": "Use translucency, blur and thin borders for panel depth; reserve the floating ambient shadow for transient notices.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do reuse the forest, midnight or slate background themes with the shared text and action palette.",
+      "Do preserve explicit selected, saved, read, loading, empty and error states in both visual and semantic controls.",
+      "Do use Lucide SVG icons and CSS atmosphere consistently across dashboard and settings.",
+      "Do retain source context and visibly label synthetic preview content.",
+      "Do respect reduced-motion preferences and keep keyboard focus visible."
+    ],
+    "donts": [
+      "Don't substitute raster decoration for the implemented CSS backgrounds and vector icons.",
+      "Don't remove panel translucency and thin borders when extending the chosen glass world.",
+      "Don't use the market red and blue directions as generic success and failure labels; errors and connector warnings have their own context.",
+      "Don't turn compact metadata into a new display or promotional label style."
+    ]
+  }
+}
