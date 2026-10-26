@@ -62,7 +62,7 @@ services:
       DATABASE_URL: postgresql://dailybrief:${POSTGRES_PASSWORD}@db:5432/dailybrief
       BRIDGE_TOKEN: ${BRIDGE_TOKEN:-}
       BRIDGE_PUBLIC_URL: ${BRIDGE_PUBLIC_URL:-}
-      BRIDGE_UPSTREAM: http://web:3000
+      BRIDGE_UPSTREAM: ${BRIDGE_UPSTREAM:-http://web:3030}
       BRIDGE_BIND: 0.0.0.0
       BRIDGE_PORT: "8787"
       GAS_WEB_APP_URL: ${GAS_WEB_APP_URL:-https://script.google.com}
