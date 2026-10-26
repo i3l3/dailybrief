@@ -12,5 +12,7 @@ coverage/
 .agents/skills/impeccable/scripts/bin/
 *.tsbuildinfo
 artifacts/
+/apps-script/.clasp.json
+/apps-script/preview.png
 *.dump
 *.sql.gz

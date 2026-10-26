@@ -333,6 +333,11 @@ try {
       assert.equal(response.status, 202);
       const { jobId } = await response.json();
       assert.ok(jobId);
+      const queued = await db!.query(
+        "SELECT priority FROM pgboss.job WHERE id=$1 AND name='summarize'",
+        [jobId],
+      );
+      assert.equal(queued.rows[0].priority, 10);
       let completed = false;
       for (let i = 0; i < 30; i++) {
         const state = await (

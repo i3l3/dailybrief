@@ -869,7 +869,7 @@ export default function Dashboard({ demo = false }: { demo?: boolean }) {
                   })}
                 </span>{" "}
                 이후 <b>뉴스 {counts.news}개</b>, <b>메일 {counts.mail}통</b>
-                {counts.cve > 0 ? <>, 보안 소식 {counts.cve}개가</> : <>이</>}
+                {counts.cve > 0 ? <>, 보안 소식 {counts.cve}개가</> : <>이</>}{" "}
                 도착했어요.
               </>
             ) : (

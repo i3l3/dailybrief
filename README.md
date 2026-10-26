@@ -2,6 +2,8 @@
 
 MIT 라이선스로 배포합니다. 자세한 내용은 [LICENSE](LICENSE)를 참고하세요.
 
+Apps Script 공개 시연 버전과 Dokploy의 Compose 브리지 배포 설정은 [apps-script/README.md](apps-script/README.md)를 참고하세요. Compose는 `bridge` 서비스도 실행하므로 `BRIDGE_TOKEN`, `BRIDGE_PUBLIC_URL`을 설정해야 합니다. 도메인은 `bridge` 서비스의 컨테이너 포트 `8787`에 연결합니다.
+
 관심 뉴스, 여러 메일 계정, 날씨, 학교 급식, 관심 종목, GeekNews와 CVE를 모으는 개인 대시보드입니다. 디자인에는 프로젝트에 설치된 **Impeccable**을 사용했습니다.
 
 ## 빠른 실행

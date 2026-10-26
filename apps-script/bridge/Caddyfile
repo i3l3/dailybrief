@@ -1,0 +1,5 @@
+# Run Caddy on the SAME host as the bridge. Set BRIDGE_HOST to your DNS name.
+# Do not publish the login-free DailyBrief web port through this reverse proxy.
+{$BRIDGE_HOST} {
+  reverse_proxy 127.0.0.1:8787
+}

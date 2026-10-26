@@ -1,0 +1,10 @@
+{
+  "builtAt": "2026-10-26T14:46:34.109Z",
+  "sources": {
+    "src/components/dashboard.tsx": "325f3ee42551dda597016afcdfe7bda4c9178ff324a7fecc964b89a63bb9b8c5",
+    "src/components/settings.tsx": "144d3d7003cc43e55b135c4aa95ccdba9016d1bb1c1d64a92731cb5ffd817331",
+    "src/components/shell.tsx": "7a1cb7ec4fc87982c6bb983c59ec85107b3c6f9f701656ab4c18e490d9af0fa8",
+    "src/app/globals.css": "b95c429fabea865d9baec444b11c8b0fbb0326093285067db5cf3a2f4bb62027",
+    "src/lib/types.ts": "cb70e54fef5447784d68fd2ef285b6dbf623701b5f154d5a4faa096597ca1bfa"
+  }
+}

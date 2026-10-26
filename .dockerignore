@@ -8,5 +8,8 @@ node_modules
 .codex
 .impeccable
 artifacts
+apps-script/dist
+apps-script/preview.png
+apps-script/.clasp.json
 coverage
 *.tsbuildinfo

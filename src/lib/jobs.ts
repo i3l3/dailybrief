@@ -36,6 +36,6 @@ export async function enqueueSummary(id: string, automatic = false) {
   return (await boss()).send(
     "summarize",
     { id, automatic },
-    { singletonKey: id, singletonSeconds: 120 },
+    { singletonKey: id, singletonSeconds: 120, priority: automatic ? 0 : 10 },
   );
 }

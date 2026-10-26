@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <base target="_blank">
+  <meta charset="utf-8">
+  <?!= include_('Styles'); ?>
+</head>
+<body>
+  <div id="root"></div>
+  <noscript>DailyBrief를 사용하려면 JavaScript를 켜 주세요.</noscript>
+  <script>window.__GAS_BOOT__ = <?!= bootJson ?>;</script>
+  <?!= include_('Bundle'); ?>
+</body>
+</html>

@@ -53,5 +53,34 @@ services:
         condition: service_completed_successfully
     restart: unless-stopped
     init: true
+  bridge:
+    build:
+      context: .
+      target: worker
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://dailybrief:${POSTGRES_PASSWORD}@db:5432/dailybrief
+      BRIDGE_TOKEN: ${BRIDGE_TOKEN:-}
+      BRIDGE_PUBLIC_URL: ${BRIDGE_PUBLIC_URL:-}
+      BRIDGE_UPSTREAM: http://web:3000
+      BRIDGE_BIND: 0.0.0.0
+      BRIDGE_PORT: "8787"
+      GAS_WEB_APP_URL: ${GAS_WEB_APP_URL:-https://script.google.com}
+    command: ["node", "--import", "tsx", "apps-script/bridge/server.ts"]
+    expose:
+      - "8787"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      web:
+        condition: service_started
+    restart: unless-stopped
+    init: true
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/bridge/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
 volumes:
   postgres_data:
