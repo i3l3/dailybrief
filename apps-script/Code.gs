@@ -1,16 +1,11 @@
 /** DailyBrief Apps Script frontend. Secrets never enter HtmlService output. */
-function owner_() {
-  var expected = (PropertiesService.getScriptProperties().getProperty('OWNER_EMAIL') || '').toLowerCase().trim();
-  var active = (Session.getActiveUser().getEmail() || '').toLowerCase().trim();
-  if (!expected || !active || active !== expected) throw new Error('본인 Google 계정으로 접속하고 OWNER_EMAIL 설정을 확인해 주세요.');
-}
 function include_(name) {
   if (['Styles', 'Bundle'].indexOf(name) < 0) throw new Error('Invalid include');
   return HtmlService.createHtmlOutputFromFile(name).getContent();
 }
 function doGet(e) {
   var p = (e && e.parameter) || {};
-  var route = p.page === 'demo' ? '/demo' : '/';
+  var route = p.page === 'settings' ? '/settings' : p.page === 'demo' ? '/demo' : '/';
   var params = [];
   ['tab', 'view', 'connected', 'error'].forEach(function(key) {
     if (typeof p[key] === 'string') params.push(encodeURIComponent(key) + '=' + encodeURIComponent(p[key].slice(0, 100)));
@@ -59,17 +54,14 @@ function backend_(path, method, body) {
 }
 function proxyRequest(input) {
   if (!input || !allowedRequest_(input.path, input.method)) throw new Error('허용되지 않은 요청입니다.');
-  if (input.path === '/api/dashboard' && input.method === 'POST')
-    return backend_('/bridge/public-dashboard', 'GET', null);
-  if (input.path.split('?')[0] === '/api/dashboard' && input.method === 'GET')
-    return backend_(input.path, 'GET', null);
-  throw new Error('공개 시연에서는 조회만 가능합니다. 설정 변경과 AI 요청은 개인 대시보드에서 이용하세요.');
+  return backend_(input.path, input.method, input.body);
 }
 function startGmailConnection() {
-  throw new Error('공개 시연에서는 메일 계정을 연결할 수 없습니다.');
+  var result = backend_('/bridge/oauth-ticket', 'POST', {});
+  if (result.status !== 200) throw new Error(result.data.error || 'Gmail 연결을 시작하지 못했습니다.');
+  return result.data;
 }
 function checkConnection() {
-  owner_();
   var result = backend_('/api/status', 'GET', null);
   return {status: result.status, connected: result.status === 200};
 }

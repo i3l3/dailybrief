@@ -1,3 +1,7 @@
+# Current release: full functionality restored (2026-10-26)
+
+User explicitly requested full original functionality with public access. Removed the read-only banner, settings placeholder, local-only item actions and GAS mutation blocks. Native dashboard POST now updates visits; settings/accounts/refresh and actual summary requests forward to the original backend. Gmail connection entry is restored. Four adapter tests cover forwarding and existing OAuth flow; TypeScript and generated bundle build pass. Real Dokploy and Apps Script redeployment remain unverified. Earlier read-only descriptions below are historical.
+
 # Apps Script adapter verification — 2026-10-23
 
 ## 2026-10-26 public / Compose update

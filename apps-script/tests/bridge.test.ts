@@ -89,22 +89,31 @@ test("OAuth ticket is single-use, PKCE and cookie required, Gmail persists befor
     assert.equal((await fetch(base+callback,{redirect:"manual"})).status,403);
   } finally { await close(bridge); }
 });
-test("public GAS allows dashboard reads without login and blocks mutations and account access", () => {
+test("GAS forwards full original functionality without requiring Google login", () => {
   let email="other@example.com";
   const context=vm.createContext({PropertiesService:{getScriptProperties:()=>({getProperty:(key:string)=>key==="OWNER_EMAIL"?"owner@example.com":null})},Session:{getActiveUser:()=>({getEmail:()=>email})}});
   vm.runInContext(readFileSync(new URL("../Code.gs",import.meta.url),"utf8"),context);
   const forwarded: unknown[]=[];
   context.backend_=(...args:unknown[])=>{forwarded.push(args); return {status:200,data:{items:[]}};};
   assert.equal(context.proxyRequest({path:"/api/dashboard",method:"POST"}).status,200);
-  assert.deepEqual(forwarded[0],["/bridge/public-dashboard","GET",null]);
+  assert.deepEqual(forwarded[0],["/api/dashboard","POST",undefined]);
   assert.equal(context.proxyRequest({path:"/api/dashboard?kind=mail",method:"GET"}).status,200);
-  assert.throws(()=>context.proxyRequest({path:"/api/status",method:"GET"}));
-  assert.throws(()=>context.proxyRequest({path:"/api/settings",method:"PUT",body:{}}));
-  assert.throws(()=>context.proxyRequest({path:"/api/accounts",method:"GET"}));
-  assert.throws(()=>context.proxyRequest({path:"/api/items/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",method:"PATCH",body:{action:"summarize"}}));
-  assert.throws(()=>context.startGmailConnection());
-  email=""; assert.throws(()=>context.owner_());
-  email="owner@example.com"; assert.doesNotThrow(()=>context.owner_());
+  for (const input of [
+    {path:"/api/status",method:"GET"},
+    {path:"/api/settings",method:"PUT",body:{settings:{}}},
+    {path:"/api/accounts",method:"GET"},
+    {path:"/api/accounts",method:"POST",body:{label:"test"}},
+    {path:"/api/accounts/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",method:"DELETE"},
+    {path:"/api/items/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",method:"PATCH",body:{action:"summarize"}},
+    {path:"/api/items/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",method:"PATCH",body:{action:"save"}},
+    {path:"/api/refresh",method:"POST",body:{}},
+  ]) {
+    assert.equal(context.proxyRequest(input).status,200);
+    assert.deepEqual(forwarded.at(-1),[input.path,input.method,input.body]);
+  }
+  assert.doesNotThrow(()=>context.startGmailConnection());
+  assert.equal(JSON.stringify(forwarded.at(-1)),JSON.stringify(["/bridge/oauth-ticket","POST",{}]));
+  assert.throws(()=>context.proxyRequest({path:"/api/not-allowed",method:"GET"}));
   const page=readFileSync(new URL("../Index.html",import.meta.url),"utf8");
   assert.equal(/BRIDGE_TOKEN|BRIDGE_URL|MASTER_KEY|GOOGLE_CLIENT_SECRET/.test(page),false);
 });

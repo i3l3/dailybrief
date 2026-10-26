@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import Dashboard from "../../src/components/dashboard";
+import SettingsPage from "../../src/components/settings";
 import { currentRoute, rpc } from "./rpc";
 
 function App() {
@@ -32,8 +33,7 @@ function App() {
     {message && <div className="gas-message" role="status">
       {message}<button onClick={() => setMessage("")} aria-label="알림 닫기">닫기</button>
     </div>}
-    <div className="gas-message">공개 시연 · 실제 대시보드 · 설정 변경과 새 AI 요청은 제한됩니다.</div>
-    {route.startsWith("/settings") ? <div className="gas-message">개인 설정은 공개 시연에서 열 수 없습니다. <a href="#/">대시보드로 돌아가기</a></div>
+    {route.startsWith("/settings") ? <SettingsPage key={route + revision} />
       : <Dashboard key={route + revision} demo={route.startsWith("/demo")} />}
   </>;
 }
