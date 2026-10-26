@@ -89,6 +89,19 @@ test("OAuth ticket is single-use, PKCE and cookie required, Gmail persists befor
     assert.equal((await fetch(base+callback,{redirect:"manual"})).status,403);
   } finally { await close(bridge); }
 });
+test("GAS reports HTML failures without leaking response contents and diagnoses token mismatch", () => {
+  const context=vm.createContext({PropertiesService:{getScriptProperties:()=>({getProperty:(key:string)=>key==="BRIDGE_URL"?" https://bridge.example.com/ ":" test-token-test-token-test-token-1234 "})}});
+  vm.runInContext(readFileSync(new URL("../Code.gs",import.meta.url),"utf8"),context);
+  const blocked={getResponseCode:()=>403,getAllHeaders:()=>({"Content-Type":"text/html"}),getContentText:()=>"<html>Just a moment <secret>never expose this</secret></html>"};
+  const error=context.responseProblem_(blocked,"/api/dashboard?private=hidden");
+  assert.match(error,/HTTP 403/); assert.match(error,/Cloudflare/);
+  assert.equal(error.includes("never expose"),false); assert.equal(error.includes("private="),false);
+  context.UrlFetchApp={fetch:(url:string)=>url.endsWith("/bridge/health")?{getResponseCode:()=>200,getContentText:()=>'{"ok":true}'}:{getResponseCode:()=>401,getContentText:()=>'{"error":"secret upstream message"}'}};
+  const results=context.diagnoseBridge();
+  assert.equal(results[0].status,200); assert.equal(results[0].json,true);
+  assert.equal(results[1].status,401); assert.match(results[1].message,/BRIDGE_TOKEN/);
+  assert.equal(JSON.stringify(results).includes("secret upstream"),false);
+});
 test("GAS forwards full original functionality without requiring Google login", () => {
   let email="other@example.com";
   const context=vm.createContext({PropertiesService:{getScriptProperties:()=>({getProperty:(key:string)=>key==="OWNER_EMAIL"?"owner@example.com":null})},Session:{getActiveUser:()=>({getEmail:()=>email})}});
